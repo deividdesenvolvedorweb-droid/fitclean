@@ -1,0 +1,10 @@
+project_id = "iulueuxrlozlhcujiwqq"
+
+[functions.mercadopago-payment]
+verify_jwt = false
+
+[functions.mercadopago-webhook]
+verify_jwt = false
+
+[functions.check-payment-status]
+verify_jwt = false

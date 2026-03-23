@@ -1,0 +1,1 @@
+CREATE POLICY "Authenticated users can read payment settings" ON public.payment_settings FOR SELECT TO authenticated USING (true);
