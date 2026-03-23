@@ -22,6 +22,7 @@ import NotFound from "./pages/NotFound";
 const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
 const CustomerLogin = lazy(() => import("./pages/CustomerLogin"));
 const CustomerAccount = lazy(() => import("./pages/CustomerAccount"));
+const LinksPage = lazy(() => import("./pages/LinksPage"));
 
 // Admin pages - lazy loaded (only needed for admin users)
 const AdminLogin = lazy(() => import("./pages/admin/AdminLogin"));
@@ -76,63 +77,64 @@ const App = () => {
   }, []);
 
   return (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <AuthProvider>
-        <ThemeProvider>
-        <CartProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <AdminRedirectPrompt />
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                {/* Store routes */}
-                <Route path="/" element={<Index />} />
-                <Route path="/categoria/:category" element={<CategoryPage />} />
-                <Route path="/categoria/:category/:subcategory" element={<CategoryPage />} />
-                <Route path="/produto/:slug" element={<ProductPage />} />
-                <Route path="/carrinho" element={<CartPage />} />
-                <Route path="/busca" element={<SearchPage />} />
-                <Route path="/checkout" element={<CheckoutPage />} />
-                <Route path="/conta/login" element={<CustomerLogin />} />
-                <Route path="/conta" element={<CustomerAccount />} />
-                
-                {/* Admin routes */}
-                <Route path="/admin/login" element={<AdminLogin />} />
-                <Route path="/admin/sem-permissao" element={<NoPermission />} />
-                <Route path="/admin" element={<AdminLayout />}>
-                  <Route index element={<AdminDashboard />} />
-                  <Route path="categorias" element={<AdminCategories />} />
-                  <Route path="produtos" element={<AdminProducts />} />
-                  <Route path="produtos/novo" element={<AdminProductForm />} />
-                  <Route path="produtos/:id" element={<AdminProductForm />} />
-                  <Route path="pedidos" element={<AdminOrders />} />
-                  <Route path="pedidos/:id" element={<AdminOrderDetail />} />
-                  <Route path="filtros" element={<AdminFilters />} />
-                  <Route path="banners" element={<AdminBanners />} />
-                  <Route path="clientes" element={<AdminCustomers />} />
-                  <Route path="clientes/:id" element={<AdminCustomerDetail />} />
-                  <Route path="cupons" element={<AdminCoupons />} />
-                  
-                  <Route path="pagamentos" element={<AdminPayments />} />
-                  <Route path="relatorios" element={<AdminReports />} />
-                  <Route path="layout" element={<AdminLayoutPage />} />
-                  <Route path="configuracoes" element={<AdminSettings />} />
-                  <Route path="usuarios" element={<AdminUsers />} />
-                  <Route path="logs" element={<AdminLogs />} />
-                </Route>
-                
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </BrowserRouter>
-        </CartProvider>
-        </ThemeProvider>
-      </AuthProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <CartProvider>
+              <Toaster />
+              <Sonner />
+              <BrowserRouter>
+                <AdminRedirectPrompt />
+                <Suspense fallback={<PageLoader />}>
+                  <Routes>
+                    {/* Store routes */}
+                    <Route path="/" element={<Index />} />
+                    <Route path="/categoria/:category" element={<CategoryPage />} />
+                    <Route path="/categoria/:category/:subcategory" element={<CategoryPage />} />
+                    <Route path="/produto/:slug" element={<ProductPage />} />
+                    <Route path="/carrinho" element={<CartPage />} />
+                    <Route path="/busca" element={<SearchPage />} />
+                    <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="/conta/login" element={<CustomerLogin />} />
+                    <Route path="/conta" element={<CustomerAccount />} />
+                    <Route path="/links" element={<LinksPage />} />
+
+                    {/* Admin routes */}
+                    <Route path="/admin/login" element={<AdminLogin />} />
+                    <Route path="/admin/sem-permissao" element={<NoPermission />} />
+                    <Route path="/admin" element={<AdminLayout />}>
+                      <Route index element={<AdminDashboard />} />
+                      <Route path="categorias" element={<AdminCategories />} />
+                      <Route path="produtos" element={<AdminProducts />} />
+                      <Route path="produtos/novo" element={<AdminProductForm />} />
+                      <Route path="produtos/:id" element={<AdminProductForm />} />
+                      <Route path="pedidos" element={<AdminOrders />} />
+                      <Route path="pedidos/:id" element={<AdminOrderDetail />} />
+                      <Route path="filtros" element={<AdminFilters />} />
+                      <Route path="banners" element={<AdminBanners />} />
+                      <Route path="clientes" element={<AdminCustomers />} />
+                      <Route path="clientes/:id" element={<AdminCustomerDetail />} />
+                      <Route path="cupons" element={<AdminCoupons />} />
+
+                      <Route path="pagamentos" element={<AdminPayments />} />
+                      <Route path="relatorios" element={<AdminReports />} />
+                      <Route path="layout" element={<AdminLayoutPage />} />
+                      <Route path="configuracoes" element={<AdminSettings />} />
+                      <Route path="usuarios" element={<AdminUsers />} />
+                      <Route path="logs" element={<AdminLogs />} />
+                    </Route>
+
+                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </Suspense>
+              </BrowserRouter>
+            </CartProvider>
+          </ThemeProvider>
+        </AuthProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
   );
 };
 
